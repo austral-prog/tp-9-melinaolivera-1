@@ -1,48 +1,57 @@
-
 def create_inventory(items):
-    """Create a dict that tracks the amount (count) of each element on the `items` list.
+    diccionario = dict()
+    for item in items:
+        if item in diccionario:
+            diccionario[item] += 1
+        else:
+            diccionario[item] = 1
+    return diccionario
 
-    :param items: list - list of items to create an inventory from.
-    :return: dict - the inventory dictionary.
-    """
-    return {}
+lista = (["coal", "wood", "wood", "diamond", "diamond", "diamond"])
+print(create_inventory(lista))
 
 
-def add_items(inventory, items):
-    """Add or increment items in inventory using elements from the items `list`.
 
-    :param inventory: dict - dictionary of existing inventory.
-    :param items: list - list of items to update the inventory with.
-    :return: dict - the inventory updated with the new items.
-    """
-    return {}
+
+
+def add_items(inventory, items):#el diccionario ya fue creado y se llama inventory
+    for item in items:
+        if item in inventory:
+            inventory[item] += 1
+        else:
+            inventory[item] = 1
+    return inventory
+
 
 
 def decrement_items(inventory, items):
-    """Decrement items in inventory using elements from the `items` list.
+    for item in items:
+        if item in inventory:
+            inventory[item] -= 1
+        else:
+            inventory[item] = 1
+    return inventory
 
-    :param inventory: dict - inventory dictionary.
-    :param items: list - list of items to decrement from the inventory.
-    :return: dict - updated inventory with items decremented.
-    """
-    return {}
+diccionario= {"coal":3, "diamond":1, "iron":5}
+lista = ["diamond", "coal", "iron", "iron"]
+print(decrement_items(diccionario, lista))
 
 
 def remove_item(inventory, item):
-    """Remove item from inventory if it matches `item` string.
+    if item in inventory:
+        del inventory[item]
+    return inventory
+diccionario = {"coal":2, "wood":1, "diamond":2}
+palabra = "coal"
+print(remove_item(diccionario, palabra))
 
-    :param inventory: dict - inventory dictionary.
-    :param item: str - item to remove from the inventory.
-    :return: dict - updated inventory with item removed. Current inventory if item does not match.
-    """
-    return {}
 
 
 def list_inventory(inventory):
-    """Create a list containing all (item_name, item_count) pairs in inventory.
+   resultado = []
+   for key, value in inventory.items():
+       if value > 0:
+           resultado.append(key,value)
+   return resultado
 
-    :param inventory: dict - an inventory dictionary.
-    :return: list of tuples - list of key, value pairs from the inventory dictionary.
-    """
-    return {}
 
